@@ -6,7 +6,7 @@ const ButtonTheme = () => {
         <ThemeContextConsumer>
         {
         ({ theme, toggleTheme }) => (
-                <button className={`${theme} button-theme`} onClick={toggleTheme}>Toggle Theme</button>
+                <button className={`${theme} button-theme`} onClick={toggleTheme}>{`${(theme === 'Day') ? 'Dark Theme': 'Light Theme'}`}</button>
             )
         }
         </ThemeContextConsumer>  

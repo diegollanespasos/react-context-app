@@ -1,11 +1,12 @@
 import { useContext } from 'react';
-import { ThemeContextConsumer } from '../../context/ThemeContext';
-import { LoginContext } from '../../context/LoginContext';
 import './UserCard.styles.css';
 import deleteIcon from '../../assets/delete.png';
+import { ThemeContextConsumer } from '../../context/ThemeContext';
+import { LoginContext } from '../../context/LoginContext';
+import ButtonLogin from '../ButtonLogin/ButtonLogin.component';
 
 const UserCard = ( { user, deleteUser }) => {
-    const { loginInfo, toggleLogInById} = useContext(LoginContext);
+    const { loginInfo } = useContext(LoginContext);
     const { id, avatar, name, biography } = user;
 
     const userInfo = loginInfo.filter(user => user.id === id)[0];
@@ -15,20 +16,17 @@ const UserCard = ( { user, deleteUser }) => {
         deleteUser(id);
     }
 
-    const handlerToggleLogInById = () => {
-        toggleLogInById(id);
-    }
-
     return (
         <ThemeContextConsumer>
             {
             ({ theme }) => (
                     <div className={`${theme} usercard-container`}>
                         <div className='usercard-header'>
-                            <button className={`${theme} button`} onClick={handlerToggleLogInById} >Log In</button>
+                            <ButtonLogin userId={id} isLoggedIn={isLoggedIn}/>
                         </div>
                         {
-                            isLoggedIn ?
+                            isLoggedIn
+                            ?
                             <div className='usercard-info'>
                                 <img src={avatar} alt={avatar} />
                                 <h2>{name}</h2>
