@@ -7,8 +7,7 @@ const ThemeContextProvider = (props) => {
     const [theme, setTheme] = useState('Day');
 
     const toggleTheme = () => {
-        const toggledTheme = (theme === 'Day') ? 'Night' : 'Day';
-        setTheme(toggledTheme);
+        setTheme((theme) => (theme === 'Day') ? 'Night' : 'Day');
     }
 
     return(

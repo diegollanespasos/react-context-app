@@ -7,8 +7,7 @@ const UsersContextProvider = (props) => {
     const [users, setUsers] = useState(USERS);
 
     const deleteUser = (userID) =>{
-        const filteredUsers = users.filter(user => user.id !== userID);
-        setUsers(filteredUsers);
+        setUsers((users) => users.filter(user => user.id !== userID));
     }
 
     return (

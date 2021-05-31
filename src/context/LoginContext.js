@@ -8,10 +8,11 @@ const LoginContextProvider = (props) => {
     const [loginInfo, setLoginInfo] = useState(LOGIN_INFO);
 
     const toggleLogInById = (userId) => {
-        const newUsersInfo = loginInfo.map(user => user.id === userId ? {...user, isLoggedIn: !user.isLoggedIn }  : user);
-        setLoginInfo(newUsersInfo);
+        setLoginInfo((loginInfo) => {
+            return loginInfo.map(user => user.id === userId ? {...user, isLoggedIn: !user.isLoggedIn }  : user);
+        })   
     }
-
+    
     return (
         <Provider value={{ loginInfo, toggleLogInById }}>
             {props.children}
